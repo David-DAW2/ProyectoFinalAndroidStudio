@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_misMedicinas">
+
+    <fragment
+        android:id="@+id/navigation_miStock"
+        android:name="com.example.proyectohealthdiary.ui.mistock.MiStockFragment"
+        android:label="@string/title_miStock"
+        tools:layout="@layout/fragment_mistock" />
+
+    <fragment
+        android:id="@+id/navigation_misMedicinas"
+        android:name="com.example.proyectohealthdiary.ui.mismedicinas.MisMedicinasFragment"
+        android:label="@string/title_misMedicinas"
+        tools:layout="@layout/fragment_mismedicinas" />
+
+    <fragment
+        android:id="@+id/navigation_medicamentos"
+        android:name="com.example.proyectohealthdiary.ui.medicamentos.MedicamentosFragment"
+        android:label="@string/title_Medicamentos"
+        tools:layout="@layout/fragment_medicamentos" />
+
+    <fragment
+        android:id="@+id/detailFragment"
+        android:name="com.example.proyectohealthdiary.ui.detail.DetailFragment"
+        android:label="fragment_detail"
+        tools:layout="@layout/fragment_detail" />
+</navigation>
