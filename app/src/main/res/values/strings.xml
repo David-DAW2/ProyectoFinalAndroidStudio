@@ -3,4 +3,6 @@
     <string name="title_miStock">Mi Stock</string>
     <string name="title_misMedicinas">Mis Medicinas</string>
     <string name="title_Medicamentos">Medicamentos</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

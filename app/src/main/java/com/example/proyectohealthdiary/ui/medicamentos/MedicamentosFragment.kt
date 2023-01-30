@@ -7,7 +7,11 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.proyectohealthdiary.R
 import com.example.proyectohealthdiary.databinding.FragmentMedicamentosBinding
+import com.example.proyectohealthdiary.ui.Medicina
 
 class MedicamentosFragment : Fragment() {
 
@@ -16,6 +20,8 @@ private var _binding: FragmentMedicamentosBinding? = null
   // onDestroyView.
   private val binding get() = _binding!!
 
+    private lateinit var adapterMed: MedicamentosAdapter
+    private lateinit var recyclerView: RecyclerView
   override fun onCreateView(
     inflater: LayoutInflater,
     container: ViewGroup?,
@@ -27,13 +33,29 @@ private var _binding: FragmentMedicamentosBinding? = null
     _binding = FragmentMedicamentosBinding.inflate(inflater, container, false)
     val root: View = binding.root
 
-    val textView: TextView = binding.textNotifications
-    medicamentosViewModel.text.observe(viewLifecycleOwner) {
-      textView.text = it
-    }
+
     return root
   }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+         val layoutManager=LinearLayoutManager(context)
+        recyclerView=view.findViewById(R.id.recyclerMedicamentos)
+        recyclerView.layoutManager =layoutManager
+        recyclerView.setHasFixedSize(true)
+        adapterMed = MedicamentosAdapter(getMedicinas())
+        recyclerView.adapter=adapterMed
+    }
+
+    fun getMedicinas(): List<Medicina> {
+        val listaMedicamentos= listOf<Medicina>(
+            Medicina("ibuprofeno", "5gr"),
+            Medicina("Paracetamol", "10gr"),
+            Medicina("Dalsin", "50ml"),
+            Medicina("Oxycontin", "40gr")
+        )
+        return listaMedicamentos
+    }
 override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
