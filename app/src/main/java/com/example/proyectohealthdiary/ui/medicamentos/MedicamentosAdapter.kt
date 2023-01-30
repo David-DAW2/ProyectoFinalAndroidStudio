@@ -19,6 +19,7 @@ class MedicamentosAdapter(private val listaMedicinas: List<Medicina>): RecyclerV
         val item =listaMedicinas[position]
         holder.render(item)
 
+
     }
 
     override fun getItemCount(): Int = listaMedicinas.size

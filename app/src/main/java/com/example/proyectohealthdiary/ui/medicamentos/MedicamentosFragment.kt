@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectohealthdiary.R
@@ -45,15 +46,34 @@ private var _binding: FragmentMedicamentosBinding? = null
         recyclerView.setHasFixedSize(true)
         adapterMed = MedicamentosAdapter(getMedicinas())
         recyclerView.adapter=adapterMed
+        recyclerView.addItemDecoration(
+            DividerItemDecoration(
+                context,
+                layoutManager.orientation
+            ))
     }
 
     fun getMedicinas(): List<Medicina> {
         val listaMedicamentos= listOf<Medicina>(
-            Medicina("ibuprofeno", "5gr"),
-            Medicina("Paracetamol", "10gr"),
-            Medicina("Dalsin", "50ml"),
-            Medicina("Oxycontin", "40gr")
-        )
+            Medicina("ibuprofeno", "5gr","https://picsum.photos/seed/picsum/150/150"),
+            Medicina("Paracetamol", "10gr","https://picsum.photos/seed/picsum/150/150"),
+            Medicina("Dalsin", "50ml","https://picsum.photos/seed/picsum/150/150"),
+            Medicina("Oxycontin", "40gr","https://picsum.photos/seed/picsum/150/150"),
+            Medicina("Oxycontin", "40gr","https://picsum.photos/seed/picsum/150/150"),
+
+            Medicina("Oxycontin", "40gr","https://picsum.photos/seed/picsum/150/150"),
+            Medicina("Oxycontin", "40gr","https://picsum.photos/seed/picsum/150/150"),
+
+            Medicina("Oxycontin", "40gr","https://picsum.photos/seed/picsum/150/150"),
+
+            Medicina("Oxycontin", "40gr","https://picsum.photos/seed/picsum/150/150"),
+
+            Medicina("Oxycontin", "40gr","https://picsum.photos/seed/picsum/150/150"),
+
+            Medicina("Oxycontin", "40gr","https://picsum.photos/seed/picsum/150/150"),
+
+
+            )
         return listaMedicamentos
     }
 override fun onDestroyView() {
