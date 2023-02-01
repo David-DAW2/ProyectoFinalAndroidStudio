@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph.xml"
+    app:startDestination="@id/medicamentosFragment2">
+    <fragment
+        android:id="@+id/medicamentosFragment2"
+        android:name="com.example.proyectohealthdiary.ui.medicamentos.MedicamentosFragment"
+        android:label="fragment_medicamentos"
+        tools:layout="@layout/fragment_medicamentos" >
+        <action
+            android:id="@+id/action_medicamentosFragment2_to_detailFragment3"
+            app:destination="@id/detailFragment3" />
+    </fragment>
+    <fragment
+        android:id="@+id/detailFragment3"
+        android:name="com.example.proyectohealthdiary.ui.detail.DetailFragment"
+        android:label="DetailFragment" />
+</navigation>

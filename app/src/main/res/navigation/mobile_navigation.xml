@@ -21,11 +21,21 @@
         android:id="@+id/navigation_medicamentos"
         android:name="com.example.proyectohealthdiary.ui.medicamentos.MedicamentosFragment"
         android:label="@string/title_Medicamentos"
-        tools:layout="@layout/fragment_medicamentos" />
+        tools:layout="@layout/fragment_medicamentos" >
+        <action
+            android:id="@+id/action_navigation_medicamentos_to_detailFragment2"
+            app:destination="@id/detailFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/detailFragment"
         android:name="com.example.proyectohealthdiary.ui.detail.DetailFragment"
         android:label="fragment_detail"
-        tools:layout="@layout/fragment_detail" />
+        tools:layout="@layout/fragment_detail" >
+        <action
+            android:id="@+id/action_detailFragment_to_navigation_medicamentos"
+            app:destination="@id/navigation_medicamentos"
+            app:popUpTo="@id/navigation_medicamentos"
+            app:launchSingleTop="true" />
+    </fragment>
 </navigation>

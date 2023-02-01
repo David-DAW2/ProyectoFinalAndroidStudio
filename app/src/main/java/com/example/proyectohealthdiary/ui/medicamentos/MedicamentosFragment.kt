@@ -1,57 +1,41 @@
 package com.example.proyectohealthdiary.ui.medicamentos
 
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.view.View
-import android.view.ViewGroup
-import android.widget.TextView
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.proyectohealthdiary.R
 import com.example.proyectohealthdiary.databinding.FragmentMedicamentosBinding
 import com.example.proyectohealthdiary.ui.Medicina
+import com.example.proyectohealthdiary.ui.detail.DetailFragment
 
-class MedicamentosFragment : Fragment() {
+class MedicamentosFragment : Fragment(R.layout.fragment_medicamentos) {
 
-private var _binding: FragmentMedicamentosBinding? = null
-  // This property is only valid between onCreateView and
-  // onDestroyView.
-  private val binding get() = _binding!!
-
-    private lateinit var adapterMed: MedicamentosAdapter
-    private lateinit var recyclerView: RecyclerView
-  override fun onCreateView(
-    inflater: LayoutInflater,
-    container: ViewGroup?,
-    savedInstanceState: Bundle?
-  ): View {
-    val medicamentosViewModel =
-            ViewModelProvider(this).get(MedicamentosViewModel::class.java)
-
-    _binding = FragmentMedicamentosBinding.inflate(inflater, container, false)
-    val root: View = binding.root
-
-
-    return root
-  }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-         val layoutManager=LinearLayoutManager(context)
-        recyclerView=view.findViewById(R.id.recyclerMedicamentos)
-        recyclerView.layoutManager =layoutManager
-        recyclerView.setHasFixedSize(true)
-        adapterMed = MedicamentosAdapter(getMedicinas())
-        recyclerView.adapter=adapterMed
-        recyclerView.addItemDecoration(
-            DividerItemDecoration(
-                context,
-                layoutManager.orientation
-            ))
+        val binding = FragmentMedicamentosBinding.bind(view).apply {
+            recyclerMedicamentos.adapter = MedicamentosAdapter(getMedicinas()){ medicina ->
+                navigateTo(medicina)
+            }
+        }
+
     }
+
+    private fun navigateTo(medicina: Medicina) {
+        findNavController().navigate(
+            R.id.action_navigation_medicamentos_to_detailFragment2,
+            bundleOf(DetailFragment.EXTRA_MEDICINA to medicina)
+        )
+
+    }
+
+}
+
+
 
     fun getMedicinas(): List<Medicina> {
         val listaMedicamentos= listOf<Medicina>(
@@ -76,8 +60,4 @@ private var _binding: FragmentMedicamentosBinding? = null
             )
         return listaMedicamentos
     }
-override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
-    }
-}
+
