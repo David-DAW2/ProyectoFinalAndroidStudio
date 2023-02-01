@@ -9,14 +9,15 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.proyectohealthdiary.R
 import com.example.proyectohealthdiary.databinding.ElementoMedBinding
-import com.example.proyectohealthdiary.ui.Medicina
+import com.example.proyectohealthdiary.ui.server.Medicina
 import com.example.proyectohealthdiary.ui.inflate
 
 
-class MedicamentosAdapter(val listamedicinas: List<Medicina>, val listener: (Medicina) -> Unit):
+class MedicamentosAdapter( val listener: (Medicina) -> Unit):
     RecyclerView.Adapter<MedicamentosAdapter.ViewHolder>() {
 
 
+    var listamedicinas = emptyList<Medicina>()
 
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
@@ -46,7 +47,7 @@ class MedicamentosAdapter(val listamedicinas: List<Medicina>, val listener: (Med
 
 
             nombreMed.text=medicina.nombre
-            cantidadMed.text=medicina.miligramos
+            cantidadMed.text=medicina.nomFormaFarmaceutica
             Glide.with(fotoMed.context).load(medicina.foto).into(fotoMed)
 
         }
