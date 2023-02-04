@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "778942133424",
+    "project_id": "proyectofinalandroid-245b1",
+    "storage_bucket": "proyectofinalandroid-245b1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:778942133424:android:8f39b707c152e8d9a03775",
+        "android_client_info": {
+          "package_name": "com.example.proyectohealthdiary"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "778942133424-kd4sttcsetedd3125rpudh1t1j4j2b3o.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBa26_fXVoBI3Nfw1dZ9RgXqkTHXPRqdng"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "778942133424-kd4sttcsetedd3125rpudh1t1j4j2b3o.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

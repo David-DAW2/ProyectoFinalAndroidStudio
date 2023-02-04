@@ -8,8 +8,9 @@ import com.example.proyectohealthdiary.ui.Medicina
 
 
 class DetailViewModel(medicina: com.example.proyectohealthdiary.ui.server.Medicina): ViewModel() {
-    private val _medicina = MutableLiveData(medicina)
+     val _medicina = MutableLiveData(medicina)
     val medicina: MutableLiveData<com.example.proyectohealthdiary.ui.server.Medicina> get() = _medicina
+
 }
 
 @Suppress("UNCHECKED_CAST")

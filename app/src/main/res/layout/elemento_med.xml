@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:background="#77EAC1"
 
     >
     <ImageView
@@ -20,10 +22,9 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
-        android:textSize="23dp"
         android:id="@+id/nombreMed"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="190dp"
+        android:layout_height="50dp"
         android:layout_marginStart="176dp"
         android:layout_marginTop="36dp"
         android:text="TextView"
@@ -31,14 +32,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:textSize="20dp"
-
         android:id="@+id/cantidadMed"
-        android:layout_width="wrap_content"
+
+        android:layout_width="150dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="176dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="24dp"
         android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/nombreMed" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

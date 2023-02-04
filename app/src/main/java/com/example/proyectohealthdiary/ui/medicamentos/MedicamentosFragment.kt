@@ -31,6 +31,8 @@ class MedicamentosFragment : Fragment(R.layout.fragment_medicamentos) {
                 adapter.listamedicinas = it
                 adapter.notifyDataSetChanged()
             }
+
+
             state.navigateTo?.let {
                 findNavController().navigate(
                     R.id.action_navigation_medicamentos_to_detailFragment2,
