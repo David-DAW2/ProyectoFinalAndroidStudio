@@ -6,6 +6,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
+
 class MedicamentosViewModel (apiKey: String): ViewModel() {
     private val _state = MutableLiveData(UiState())
     val state: LiveData<UiState> get() = _state

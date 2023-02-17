@@ -22,5 +22,6 @@ object RemoteConnection {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
+
     val service: RemoteService = builder.create()
 }

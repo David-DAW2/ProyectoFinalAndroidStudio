@@ -38,7 +38,7 @@ class MainActivity : AppCompatActivity() {
 
         val navView: BottomNavigationView = binding.navView
         val bundle = intent.extras
-        var email=bundle?.getString("email")
+        //var email=bundle?.getString("email")
 
 
 

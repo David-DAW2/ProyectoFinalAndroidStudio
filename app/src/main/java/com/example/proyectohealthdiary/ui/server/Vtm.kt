@@ -1,6 +1,6 @@
 package com.example.proyectohealthdiary.ui.server
 
 data class Vtm(
-    val id: Int,
+    val id: Long,
     val nombre: String
 )

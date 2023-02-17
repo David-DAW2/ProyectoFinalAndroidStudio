@@ -15,7 +15,11 @@
         android:id="@+id/navigation_misMedicinas"
         android:name="com.example.proyectohealthdiary.ui.mismedicinas.MisMedicinasFragment"
         android:label="@string/title_misMedicinas"
-        tools:layout="@layout/fragment_mismedicinas" />
+        tools:layout="@layout/fragment_mismedicinas" >
+        <action
+            android:id="@+id/action_navigation_misMedicinas_to_detailFragment"
+            app:destination="@id/detailFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_medicamentos"
