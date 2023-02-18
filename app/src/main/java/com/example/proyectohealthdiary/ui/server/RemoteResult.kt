@@ -16,5 +16,5 @@ data class Medicina(
                         @SerializedName("formaFarmaceuticaSimplificada.nombre") val nomFormaFarmaceutica : String?,
                         @SerializedName("labtitular") val nombreLab:String?,
                         @SerializedName("fotos.url") val foto:String?,
-    val dosis:String
+    val dosis:String?
 ):Parcelable

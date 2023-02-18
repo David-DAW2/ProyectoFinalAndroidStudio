@@ -53,13 +53,8 @@ class MainActivity : AppCompatActivity() {
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
 
-        db?.collection("users")?.document("email")?.set(user)
 
     }
 
-    val user = hashMapOf(
-        "first" to "Ada",
-        "last" to "junka",
-        "born" to 1815
-    )
+
 }

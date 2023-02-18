@@ -43,11 +43,12 @@ class MedicamentosAdapter( val listener: (Medicina) -> Unit):
         fun bind(medicina: Medicina){
             val fotoMed= binding.fotoMed
             val nombreMed= binding.nombreMed
-            val cantidadMed= binding.cantidadMed
+            var cantidadMed= binding.cantidadMed
+
 
 
             nombreMed.text=medicina.nombre
-            cantidadMed.text=medicina.nomFormaFarmaceutica
+           cantidadMed.text=medicina.nomFormaFarmaceutica
             Glide.with(fotoMed.context).load(medicina.foto).into(fotoMed)
 
         }

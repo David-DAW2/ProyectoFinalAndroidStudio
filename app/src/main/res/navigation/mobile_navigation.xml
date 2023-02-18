@@ -15,10 +15,11 @@
         android:id="@+id/navigation_misMedicinas"
         android:name="com.example.proyectohealthdiary.ui.mismedicinas.MisMedicinasFragment"
         android:label="@string/title_misMedicinas"
-        tools:layout="@layout/fragment_mismedicinas" >
+        tools:layout="@layout/fragment_mis_medicinas" >
+
         <action
-            android:id="@+id/action_navigation_misMedicinas_to_detailFragment"
-            app:destination="@id/detailFragment" />
+            android:id="@+id/action_navigation_misMedicinas_to_medicinaDetailFragment"
+            app:destination="@id/medicinaDetailFragment" />
     </fragment>
 
     <fragment
@@ -41,5 +42,13 @@
             app:destination="@id/navigation_medicamentos"
             app:popUpTo="@id/navigation_medicamentos"
             app:launchSingleTop="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/medicinaDetailFragment"
+        android:name="com.example.proyectohealthdiary.ui.mismedicinas.medicinaDetail.medicinaDetailFragment"
+        android:label="medicinaDetailFragment" >
+        <action
+            android:id="@+id/action_medicinaDetailFragment_to_navigation_misMedicinas"
+            app:destination="@id/navigation_misMedicinas" />
     </fragment>
 </navigation>
