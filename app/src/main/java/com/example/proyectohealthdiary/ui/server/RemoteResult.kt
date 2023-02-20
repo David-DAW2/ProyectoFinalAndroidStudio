@@ -17,4 +17,6 @@ data class Medicina(
                         @SerializedName("labtitular") val nombreLab:String?,
                         @SerializedName("fotos.url") val foto:String?,
     val dosis:String?
-):Parcelable
+):Parcelable {
+    val stock: String?="stock"
+}

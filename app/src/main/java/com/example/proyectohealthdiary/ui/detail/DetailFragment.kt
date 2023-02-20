@@ -44,7 +44,6 @@ class DetailFragment : Fragment(R.layout.fragment_detail){
             binding.contenido.text = medicina.nombre
             bindingDetail(binding.autor, medicina)
             val email = FirebaseAuth.getInstance().currentUser?.email
-            Toast.makeText(context,email.toString(),Toast.LENGTH_SHORT).show()
             binding.aAdir.setOnClickListener{
                 val builder = AlertDialog.Builder(requireContext())
                 builder.setMessage("¿Desea añadir este medicamento a sus medicinas?")
@@ -63,7 +62,9 @@ class DetailFragment : Fragment(R.layout.fragment_detail){
                                     "Nombre" to nombre,
                                     "Formato" to formato,
                                     "Laboratorio" to laboratorio,
-                                    "foto" to foto
+                                    "foto" to foto,
+                                    "stock" to medicina.stock
+
                                 ))
                             } else {
                                 Toast.makeText(requireContext(), "Faltan campos requeridos", Toast.LENGTH_SHORT).show()

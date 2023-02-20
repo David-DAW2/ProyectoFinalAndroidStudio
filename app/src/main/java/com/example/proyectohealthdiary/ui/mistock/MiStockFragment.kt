@@ -3,6 +3,7 @@ package com.example.proyectohealthdiary.ui.mistock
 import MiMedicinaAdapter
 import MiStockAdapter
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -51,6 +52,11 @@ class MiStockFragment : Fragment() {
         viewModel.medicinas.observe(this) { medicinas ->
             adapter.listamedicinas = medicinas as MutableList<MiMedicina>
             adapter.notifyDataSetChanged()
+
+            for (medicina in medicinas) {
+                val stock = medicina.stock
+                Log.d("MiStockFragment", "Stock for ${medicina.Nombre}: $stock")
+            }
         }
     }
 }
