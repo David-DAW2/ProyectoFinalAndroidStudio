@@ -12,24 +12,17 @@
         tools:layout="@layout/fragment_mistock" />
 
     <fragment
-        android:id="@+id/navigation_misMedicinas"
-        android:name="com.example.proyectohealthdiary.ui.mismedicinas.MisMedicinasFragment"
-        android:label="@string/title_misMedicinas"
-        tools:layout="@layout/fragment_mis_medicinas" >
-
-        <action
-            android:id="@+id/action_navigation_misMedicinas_to_medicinaDetailFragment"
-            app:destination="@id/medicinaDetailFragment" />
-    </fragment>
-
-    <fragment
         android:id="@+id/navigation_medicamentos"
         android:name="com.example.proyectohealthdiary.ui.medicamentos.MedicamentosFragment"
         android:label="@string/title_Medicamentos"
         tools:layout="@layout/fragment_medicamentos" >
         <action
             android:id="@+id/action_navigation_medicamentos_to_detailFragment2"
-            app:destination="@id/detailFragment" />
+            app:destination="@id/detailFragment"
+            app:enterAnim="@anim/slide_right_in"
+            app:exitAnim="@anim/slide_left_out"
+            app:popEnterAnim="@anim/slide_left_in"
+            app:popExitAnim="@anim/slide_right_out"/>
     </fragment>
 
     <fragment
@@ -41,7 +34,27 @@
             android:id="@+id/action_detailFragment_to_navigation_medicamentos"
             app:destination="@id/navigation_medicamentos"
             app:popUpTo="@id/navigation_medicamentos"
-            app:launchSingleTop="true" />
+            app:launchSingleTop="true"
+            app:enterAnim="@anim/slide_right_in"
+            app:exitAnim="@anim/slide_left_out"
+            app:popEnterAnim="@anim/slide_left_in"
+            app:popExitAnim="@anim/slide_right_out"/>
+    </fragment>
+
+
+
+    <fragment
+        android:id="@+id/navigation_misMedicinas"
+        android:name="com.example.proyectohealthdiary.ui.mismedicinas.MisMedicinasFragment"
+        android:label="@string/title_misMedicinas"
+        tools:layout="@layout/fragment_mis_medicinas" >
+        <action
+            android:id="@+id/action_navigation_misMedicinas_to_medicinaDetailFragment"
+            app:destination="@id/medicinaDetailFragment"
+            app:enterAnim="@anim/slide_right_in"
+            app:exitAnim="@anim/slide_left_out"
+            app:popEnterAnim="@anim/slide_left_in"
+            app:popExitAnim="@anim/slide_right_out"/>
     </fragment>
     <fragment
         android:id="@+id/medicinaDetailFragment"
@@ -51,4 +64,5 @@
             android:id="@+id/action_medicinaDetailFragment_to_navigation_misMedicinas"
             app:destination="@id/navigation_misMedicinas" />
     </fragment>
+
 </navigation>

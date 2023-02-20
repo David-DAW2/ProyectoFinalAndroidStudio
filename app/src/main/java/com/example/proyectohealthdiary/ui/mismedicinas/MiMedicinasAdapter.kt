@@ -1,3 +1,5 @@
+import android.content.ContentValues.TAG
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -9,6 +11,9 @@ import com.example.proyectohealthdiary.databinding.FragmentMisMedicinasBinding
 import com.example.proyectohealthdiary.databinding.ItemMedicinaBinding
 import com.example.proyectohealthdiary.ui.mismedicinas.MiMedicina
 import com.example.proyectohealthdiary.ui.server.Medicina
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.firestore.FirebaseFirestore
+import kotlinx.android.synthetic.main.item_medicina.view.*
 
 class MiMedicinaAdapter(val listener: (MiMedicina) -> Unit) : RecyclerView.Adapter<MiMedicinaAdapter.ViewHolder>() {
 
@@ -25,6 +30,9 @@ class MiMedicinaAdapter(val listener: (MiMedicina) -> Unit) : RecyclerView.Adapt
         holder.itemView.setOnClickListener {
             listener(medicina)
         }
+        holder.itemView.eliminar.setOnClickListener {
+            eliminarMedicina(medicina)
+        }
     }
 
     override fun getItemCount(): Int {
@@ -40,10 +48,34 @@ class MiMedicinaAdapter(val listener: (MiMedicina) -> Unit) : RecyclerView.Adapt
             val laboratorioMed= binding.medicinaLaboratorio
 
 
-            nombreMed.text = medicina.nombre
+            val nombreSinEspacios = medicina.Nombre?.substringBefore(" ") ?: ""
+
+            nombreMed.text = nombreSinEspacios
             formatoMed.text=medicina.Formato
 
             Glide.with(fotoMed.context).load(medicina.foto).into(fotoMed)
+
         }
     }
+    private fun eliminarMedicina(medicina: MiMedicina) {
+        val db = FirebaseFirestore.getInstance()
+        val currentUserEmail = FirebaseAuth.getInstance().currentUser?.email
+
+        if (currentUserEmail != null) {
+
+            val documentRef = medicina.Nombre?.let { db.collection(currentUserEmail).document(it) }
+            if (documentRef != null) {
+                documentRef.delete()
+                    .addOnSuccessListener {
+                        Log.d(TAG, "Documento eliminado correctamente.")
+                        listamedicinas.remove(medicina)
+                        notifyDataSetChanged()
+                    }
+                    .addOnFailureListener { e ->
+                        Log.w(TAG, "Error al eliminar el documento", e)
+                    }
+            }
+        }
+    }
+
 }

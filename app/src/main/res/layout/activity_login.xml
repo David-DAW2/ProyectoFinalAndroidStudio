@@ -43,7 +43,7 @@
         android:layout_marginEnd="156dp"
         android:paddingLeft="15dip"
         android:paddingRight="15dip"
-        android:text="enviar"
+        android:text="Acceder"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/txtPass"
         app:layout_constraintHorizontal_bias="1.0"

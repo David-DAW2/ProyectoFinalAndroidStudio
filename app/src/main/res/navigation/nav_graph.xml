@@ -11,10 +11,50 @@
         tools:layout="@layout/fragment_medicamentos" >
         <action
             android:id="@+id/action_medicamentosFragment2_to_detailFragment3"
-            app:destination="@id/detailFragment3" />
+            app:destination="@id/detailFragment3"
+            app:enterAnim="@anim/slide_right_in"
+            app:exitAnim="@anim/slide_left_out"
+            app:popEnterAnim="@anim/slide_left_in"
+            app:popExitAnim="@anim/slide_right_out"/>
     </fragment>
     <fragment
         android:id="@+id/detailFragment3"
         android:name="com.example.proyectohealthdiary.ui.detail.DetailFragment"
-        android:label="DetailFragment" />
+        android:label="DetailFragment" >
+        <action
+            android:id="@+id/action_detailFragment3_to_medicamentosFragment2"
+            app:destination="@id/medicamentosFragment2"
+            app:enterAnim="@anim/slide_right_in"
+            app:exitAnim="@anim/slide_left_out"
+            app:popEnterAnim="@anim/slide_left_in"
+            app:popExitAnim="@anim/slide_right_out"/>
+    </fragment>
+    <fragment
+        android:id="@+id/misMedicinasFragment"
+        android:name="com.example.proyectohealthdiary.ui.mismedicinas.MisMedicinasFragment"
+        android:label="fragment_mis_medicinas"
+        tools:layout="@layout/fragment_mis_medicinas" >
+        <action
+            android:id="@+id/action_misMedicinasFragment_to_medicinaDetailFragment2"
+            app:destination="@id/medicinaDetailFragment2"
+            app:enterAnim="@anim/slide_right_in"
+            app:exitAnim="@anim/slide_left_out"
+            app:popEnterAnim="@anim/slide_left_in"
+            app:popExitAnim="@anim/slide_right_out"/>
+    </fragment>
+    <fragment
+        android:id="@+id/medicinaDetailFragment2"
+        android:name="com.example.proyectohealthdiary.ui.mismedicinas.medicinaDetail.medicinaDetailFragment"
+        android:label="medicinaDetailFragment" >
+        <action
+            android:id="@+id/action_medicinaDetailFragment2_to_misMedicinasFragment"
+            app:destination="@id/misMedicinasFragment"
+            app:enterAnim="@anim/slide_right_in"
+            app:exitAnim="@anim/slide_left_out"
+            app:popEnterAnim="@anim/slide_left_in"
+            app:popExitAnim="@anim/slide_right_out"/>
+    </fragment>
+
+
 </navigation>
+

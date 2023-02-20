@@ -50,13 +50,24 @@ class DetailFragment : Fragment(R.layout.fragment_detail){
                 builder.setMessage("¿Desea añadir este medicamento a sus medicinas?")
                     .setPositiveButton("Ok",
                         DialogInterface.OnClickListener { dialog, id ->
-                            binding.aAdir.setImageDrawable(requireContext().getDrawable(R.drawable.ic_drugs))
-                            db?.collection(email!!)?.document(medicina.nombre.toString())?.set(hashMapOf(
-                                "Nombre" to medicina.nombre,
-                                "Formato" to medicina.nomFormaFarmaceutica,
-                                "Laboratorio" to medicina.nombreLab,
-                                "foto" to medicina.foto,
-                            ))
+
+                            val nombre = medicina.nombre.toString().substringBefore("/") ?: ""
+
+                            val formato = medicina.nomFormaFarmaceutica.toString()
+                            val laboratorio = medicina.nombreLab.toString()
+                            val foto = medicina.foto.toString()
+
+                            if (nombre.isNotBlank() && formato.isNotBlank() && laboratorio.isNotBlank() && foto.isNotBlank()) {
+                                binding.aAdir.setImageDrawable(requireContext().getDrawable(R.drawable.ic_drugs))
+                                db?.collection(email!!)?.document(nombre)?.set(hashMapOf(
+                                    "Nombre" to nombre,
+                                    "Formato" to formato,
+                                    "Laboratorio" to laboratorio,
+                                    "foto" to foto
+                                ))
+                            } else {
+                                Toast.makeText(requireContext(), "Faltan campos requeridos", Toast.LENGTH_SHORT).show()
+                            }
                         })
                     .setNegativeButton("Cancel",
                         DialogInterface.OnClickListener { dialog, id ->

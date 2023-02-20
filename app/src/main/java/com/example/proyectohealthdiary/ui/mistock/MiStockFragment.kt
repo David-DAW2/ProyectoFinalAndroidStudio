@@ -1,41 +1,56 @@
 package com.example.proyectohealthdiary.ui.mistock
 
+import MiMedicinaAdapter
+import MiStockAdapter
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.proyectohealthdiary.R
 import com.example.proyectohealthdiary.databinding.FragmentMistockBinding
+import com.example.proyectohealthdiary.ui.mismedicinas.MiMedicina
+import com.example.proyectohealthdiary.ui.mismedicinas.MisMedicinasViewModel
+import com.example.proyectohealthdiary.ui.mismedicinas.medicinaDetail.medicinaDetailFragment
 
 class MiStockFragment : Fragment() {
 
-private var _binding: FragmentMistockBinding? = null
-  // This property is only valid between onCreateView and
-  // onDestroyView.
-  private val binding get() = _binding!!
+    private lateinit var recyclerView: RecyclerView
+    private lateinit var adapter: MiStockAdapter
+    private lateinit var layoutManager: RecyclerView.LayoutManager
 
-  override fun onCreateView(
-    inflater: LayoutInflater,
-    container: ViewGroup?,
-    savedInstanceState: Bundle?
-  ): View {
-    val miStockViewModel =
-            ViewModelProvider(this).get(MiStockViewModel::class.java)
+    private val viewModel: MiStockViewModel by viewModels()
 
-    _binding = FragmentMistockBinding.inflate(inflater, container, false)
-    val root: View = binding.root
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        val view = inflater.inflate(R.layout.fragment_mistock, container, false)
+        recyclerView = view.findViewById(R.id.recyclerStock)
+        layoutManager = LinearLayoutManager(context)
+        recyclerView.layoutManager = layoutManager
+        adapter =MiStockAdapter { medicina -> }
+        recyclerView.adapter = adapter
 
-    val textView: TextView = binding.textHome
-    miStockViewModel.text.observe(viewLifecycleOwner) {
-      textView.text = it
+        return view
     }
-    return root
-  }
 
-override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
+
+
+    override fun onStart() {
+        super.onStart()
+        viewModel.loadMedicinas()
+        viewModel.medicinas.observe(this) { medicinas ->
+            adapter.listamedicinas = medicinas as MutableList<MiMedicina>
+            adapter.notifyDataSetChanged()
+        }
     }
 }

@@ -8,9 +8,10 @@
     tools:context=".ui.mismedicinas.MisMedicinasFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:layout_width="409dp"
-        android:layout_height="729dp"
         android:id="@+id/recyclerMedicina"
+        android:layout_width="376dp"
+        android:layout_height="536dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
