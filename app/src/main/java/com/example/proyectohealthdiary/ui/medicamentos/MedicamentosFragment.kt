@@ -24,7 +24,7 @@ class MedicamentosFragment : Fragment(R.layout.fragment_medicamentos) {
         binding = FragmentMedicamentosBinding.bind(view).apply {
             recyclerMedicamentos.adapter = adapter
         }
-        (requireActivity() as AppCompatActivity).supportActionBar?.title = getString(R.string.app_name)
+        (requireActivity() as AppCompatActivity).supportActionBar?.title = "Medicamentos"
 
         viewModel.state.observe(viewLifecycleOwner){state ->
             state.medicinas?.let {

@@ -59,39 +59,6 @@ class medicinaDetailFragment : Fragment(R.layout.fragment_medicina_detail) {
             binding.contenido.text = medicina.Nombre
             bindingDetail(binding.autor, medicina)
             val email = FirebaseAuth.getInstance().currentUser?.email
-            Toast.makeText(context, email.toString(), Toast.LENGTH_SHORT).show()
-          /*  binding.eliminar.setOnClickListener {
-                val builder = AlertDialog.Builder(requireContext())
-                builder.setMessage("¿Desea eliminar este medicamento?")
-                    .setPositiveButton("Sí") { dialog, id ->
-                        medicina.Nombre?.let { it1 ->
-                            db?.collection(email!!)?.document(it1)?.delete()
-                                ?.addOnSuccessListener {
-                                    Toast.makeText(
-                                        requireContext(),
-                                        "Medicamento eliminado exitosamente",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                    // Regresar al fragmento anterior
-                                    requireActivity().supportFragmentManager.popBackStack()
-                                }
-                                ?.addOnFailureListener {
-                                    Toast.makeText(
-                                        requireContext(),
-                                        "Error eliminando medicamento",
-                                        Toast.LENGTH_SHORT
-                                    ).show()
-                                }
-                        }
-                    }
-                    .setNegativeButton("No") { dialog, id ->
-                        // User cancelled the dialog
-                    }
-                builder.create()
-                builder.show()
-
-
-            }*/
 
 
         }
@@ -101,8 +68,10 @@ class medicinaDetailFragment : Fragment(R.layout.fragment_medicina_detail) {
 
     private fun bindingDetail(detalles: TextView, medicina: MiMedicina) {
         detalles.text = buildSpannedString {
-            bold { append("Laboratorio: ") }
-            appendLine(medicina.Nombre)
+            bold { append("Nombre: ") }
+            val nombreSinEspacios = medicina.Nombre?.substringBefore(" ") ?: ""
+
+            appendLine(nombreSinEspacios)
             append()
             bold { append("Formato: ") }
             appendLine(medicina.Formato)
